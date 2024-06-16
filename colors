@@ -1,0 +1,24 @@
+#!/bin/bash
+
+NOCOLOR="\e[m"
+
+function CycleColors {
+	Variation="0"
+	Color="$1"
+	ToColor="$2"
+	while [ $Color -le $ToColor ]; do
+	   echo -e "\\\e[$Variation;$Color""m \e[$Variation;"$Color"mThe quick brown fox jumps over the lazy dog."$NOCOLOR "\\\e[m"
+	     if [[ $Variation == "0" ]]; then
+	        Variation="1"
+	     else
+	        Variation="0"
+	        Color=$(($Color+1))
+	     fi
+	done
+}
+
+CycleColors 30 37
+CycleColors 40 47
+CycleColors 90 97
+CycleColors 100 107
+
